@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, CardHeader, Divider, TextField } from '@mui/material'
 import { useState } from 'react'
 import { login } from '../../services/authService'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
  
@@ -8,20 +9,20 @@ const Login = () => {
     const [password, setPassword] = useState('')
     /* const [errorMessage, setErrorMessage] = useState('') */
 
+    const navigate = useNavigate()
+
     const handleLogin = async () => {
         const response = await login({ email, password })
-        console.log(response)
         localStorage.setItem('token', response.token)
-
     }
 
     return (
         <Card sx={{ maxWidth: '500px' }}>
-          <CardHeader title='Login' />
+          <CardHeader title='Inicio de sesión' />
           <CardContent>
             <TextField
               onChange={(e) => setEmail(e.target.value)}
-              label='Email'
+              label='E-mail'
               variant='outlined'
               fullWidth={true}
               sx={{ marginBottom: '20px' }}
@@ -29,7 +30,7 @@ const Login = () => {
             <TextField
              onChange={(e) => setPassword(e.target.value)}
               type='password'
-              label='Password'
+              label='Contraseña'
               variant='outlined'
               fullWidth={true}
             />
@@ -41,9 +42,9 @@ const Login = () => {
           </CardContent>
           <Divider />
           <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button>Sign up</Button>
+            <Button onClick={() => { navigate('/signup') }}>Registrarse</Button>
             <Button variant='contained' onClick={() => {handleLogin()}}>
-              Login
+              Iniciar sesión
             </Button>
           </CardActions>
         </Card>
