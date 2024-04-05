@@ -19,6 +19,7 @@ const Signup = () => {
     const handleSignup = async () => {
         const response = await signup({ name: name, lastName: lastName, nickName: nickName, email: email, password: password, age: age, country: country })
         localStorage.setItem('token', response.token)
+        navigate('/')
     }
 
     return (
@@ -89,7 +90,7 @@ const Signup = () => {
           </CardContent>
           <Divider />
           <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button onClick={() => { navigate('/') }}>Iniciar sesión</Button>
+            <Button onClick={() => { navigate('/auth/login') }}>Iniciar sesión</Button>
             <Button variant='contained' onClick={() => {handleSignup()}}>
               Registrar
             </Button>

@@ -6,8 +6,7 @@ import Footer from "../components/Footer/Footer"
 const MainLayout = () => {
   return (
     <>
-    { localStorage.getItem('token') ? <Header/> : null }
-        
+        <Header/>  
         <Outlet/>
         <Footer/>
     </>

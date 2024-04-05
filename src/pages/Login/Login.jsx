@@ -14,6 +14,7 @@ const Login = () => {
     const handleLogin = async () => {
         const response = await login({ email, password })
         localStorage.setItem('token', response.token)
+        navigate('/')
     }
 
     return (
@@ -43,7 +44,7 @@ const Login = () => {
           </CardContent>
           <Divider />
           <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button onClick={() => { navigate('/signup') }}>Registrarse</Button>
+            <Button onClick={() => { navigate('/auth/signup') }}>Registrarse</Button>
             <Button variant='contained' onClick={() => {handleLogin()}}>
               Iniciar sesión
             </Button>

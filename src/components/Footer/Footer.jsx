@@ -1,8 +1,14 @@
+import { Box, Typography } from "@mui/material"
 
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <>
+  <Box sx={{ bottom: 0, position: 'fixed', width: '100vw', textAlign: 'center' }}>
+        <Typography variant='h6'>&copy; Haveamin?</Typography>
+    </Box>
+
+    </>
   )
 }
 
