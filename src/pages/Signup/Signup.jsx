@@ -22,6 +22,7 @@ const Signup = () => {
     }
 
     return (
+      <div className='main'>
         <Card sx={{ maxWidth: '500px' }}>
           <CardHeader title='Registro' />
           <CardContent>
@@ -94,6 +95,8 @@ const Signup = () => {
             </Button>
           </CardActions>
         </Card>
+      </div>
+        
       )
 }
 

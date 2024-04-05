@@ -17,6 +17,7 @@ const Login = () => {
     }
 
     return (
+      <div className='main'>
         <Card sx={{ maxWidth: '500px' }}>
           <CardHeader title='Inicio de sesión' />
           <CardContent>
@@ -48,6 +49,8 @@ const Login = () => {
             </Button>
           </CardActions>
         </Card>
+      </div>
+        
       )
 }
 
