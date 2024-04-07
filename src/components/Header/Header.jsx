@@ -1,18 +1,24 @@
-import { AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import { AppBar, Avatar, Box, Container, IconButton, InputAdornment, Menu, MenuItem, TextField, Toolbar, Tooltip, Typography } from "@mui/material";
 import { useState } from 'react'
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { useNavigate } from "react-router-dom";
+const settings = ['Profile', 'Account', 'Dashboard', 'Cerrar sesión'];
 
 const Header = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const navigate = useNavigate()
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-
+  }
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
+  }
+
+  const handleLogout = () => {
+      localStorage.removeItem('token')
+      navigate('/') 
+  }
 
   return (
     <AppBar position="static">
@@ -36,8 +42,26 @@ const Header = () => {
 
          
         
-          <Box sx={{ flexGrow: 1}}>
-          Esto es una caja vacia para meter cosas que ahoramismo no nos funcionan         
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
+          
+          <TextField
+            variant="outlined"
+            placeholder="Buscar..."
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+                
+              )
+            }}
+            
+            sx={{ width: '300px' }} 
+            
+             />
+
+           
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -63,7 +87,7 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={setting === 'Cerrar sesión' ? handleLogout : handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

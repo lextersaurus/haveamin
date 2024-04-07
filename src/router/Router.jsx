@@ -4,6 +4,7 @@ import Signup from "../pages/Signup/Signup";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
+import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
 
 export const router = createBrowserRouter([
     {
@@ -36,5 +37,9 @@ export const router = createBrowserRouter([
                 element: <Signup />
             },
         ]
+    },
+    {
+        path: '/categories',
+        element: <CategoryEvent/>
     }
 ])

@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'https://haveamin.onrender.com/api'
+    baseURL: 'https://haveamin.onrender.com/api',
 })
