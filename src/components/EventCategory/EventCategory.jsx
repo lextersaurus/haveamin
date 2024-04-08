@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getEventByCategory } from '../../services/eventService'
+import EventCard from '../EventCard/EventCard'
 
 const EventCategory = () => {
     const [categoryEvent, setCategoryEvent] = useState([])
@@ -8,7 +9,6 @@ const EventCategory = () => {
 
     const handleCategoryCocktail = async () => {
             const response = await getEventByCategory(categoryId)
-            /*  console.log(response) */
             setCategoryEvent(response)
     
     
@@ -20,15 +20,9 @@ const EventCategory = () => {
 
     return (
         <div>  
-            <div className="mainCategory">
-            <h1>hola</h1>
+            <div className="categoryList">
                 {categoryEvent.map(event => (
-                    <Link key={event.id} to={'category/' + event.id }>
-                        <div >
-                                <h3>{event.name}</h3>
-                                
-                            </div>
-                    </Link> 
+                    <EventCard key={event.id} event={event}/>
                  ))}
             </div>
         </div>

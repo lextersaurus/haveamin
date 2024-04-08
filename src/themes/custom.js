@@ -18,5 +18,8 @@ export const customTheme = createTheme({
           default: '#fff9f1',
           paper: '#fff'
         },
+        success: {
+          main: '#00c853'
+        }
       },
 })
