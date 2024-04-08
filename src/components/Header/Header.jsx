@@ -74,7 +74,7 @@ const Header = () => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="100vw">
         <Toolbar disableGutters>
           <Typography

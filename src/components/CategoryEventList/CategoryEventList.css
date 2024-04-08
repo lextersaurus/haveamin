@@ -1,17 +1,15 @@
 
-.eventListLi {
+.categoryListLi {
     height: auto;
-    width: 800px;
+    width: 120px;
     background-color: #50B2C0;
     margin: 10px;
     border-radius: 10px;
-    color: black;
-    text-decoration: none; 
-    text-align: start; 
-    padding: 10px;
+    color: #fff9f1;
+    text-decoration: none;  
 }
 
-.eventList  {
+.categoryList  {
     display: flex;
     flex-direction: row;
     list-style: none;

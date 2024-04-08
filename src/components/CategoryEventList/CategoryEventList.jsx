@@ -21,14 +21,13 @@ const CategoryEvent = () => {
 
   return (
     <div>
-        <h2>Categorias de eventos</h2>
-            <ul className="categoryList">
-                {categories.map(category => (
-                    <Link className="categoryListLi" key={category.id} to={'/category/' + category.id} >
-                        <li>{category.name}</li>
-                    </Link>
-                ))}
-            </ul>
+        <ul className="categoryList">
+            {categories.map(category => (
+                <Link className="categoryListLi" key={category.id} to={'/category/' + category.id} >
+                    <li>{category.name}</li>
+                </Link>
+            ))}
+        </ul>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import Home from "../pages/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
 /* import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
  */import UserEvents from "../pages/UserEvents/UserEvents";
-import AllEvents from "../pages/AllEvents/AllEvents";
+import AllEvents from "../components/AllEvents/AllEvents";
 import EventCategory from "../components/EventCategory/EventCategory";
 
 export const router = createBrowserRouter([

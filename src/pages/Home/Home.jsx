@@ -1,6 +1,6 @@
 import { Divider } from "@mui/material"
-import CategoryEvent from "../CategoryEventList/CategoryEventList"
-import AllEvents from "../AllEvents/AllEvents"
+import CategoryEvent from "../../components/CategoryEventList/CategoryEventList"
+import AllEvents from "../../components/AllEvents/AllEvents"
 
 
 const Home = () => {

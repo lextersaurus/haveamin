@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react"
-import { getUserEvent } from "../../services/userService"
-
-import './UserEvents.css'
-import { Divider } from "@mui/material"
-import EventCard from "../../components/EventCard/EventCard"
+import { getAllEvents } from "../../services/eventService"
+import './AllEvents.css'
+import EventCard from "../EventCard/EventCard"
 
 
-const UserEvents = () => {
+const AllEvents = () => {
     const [events, setEvents] = useState([])
 
     const handleUserEvents= async () => {
-          const response = await getUserEvent()
+          const response = await getAllEvents()
          /*  console.log(response) */
          setEvents(response)
       }
@@ -21,8 +19,7 @@ const UserEvents = () => {
 
   return (
     <div>
-      <h2>Mis eventos</h2>
-      <Divider variant="middle" />
+      <h3>Todos los eventos</h3>
       <ul className="eventList">
           {events.map(event => (<EventCard key={event.id} event={event}/>))}
       </ul>
@@ -30,4 +27,4 @@ const UserEvents = () => {
   )
 }
 
-export default UserEvents
+export default AllEvents
