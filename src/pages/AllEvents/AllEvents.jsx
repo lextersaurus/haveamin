@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import { getUserEvent } from "../../services/userService"
+import { getAllEvents } from "../../services/eventService"
+import { IconButton } from "@mui/material"
+import './AllEvents.css'
+import { AddCircle } from "@mui/icons-material"
 
-import './UserEvents.css'
-import { Divider } from "@mui/material"
 
-
-const UserEvents = () => {
+const AllEvents = () => {
     const [events, setEvents] = useState([])
 
     const handleUserEvents= async () => {
-          const response = await getUserEvent()
+          const response = await getAllEvents()
          /*  console.log(response) */
          setEvents(response)
       }
@@ -20,12 +20,11 @@ const UserEvents = () => {
 
   return (
     <div>
-        <h2>Mis eventos</h2>
-      <Divider variant="middle" />
-        
-            <ul className="userEvent">
+        <h3>Eventos</h3>
+            <ul className="eventList">
                 {events.map(event => (
-                    <p className="userEventLi" key={event.id} >
+                    <div key={event.id}>
+                         <p className="eventListLi"  >
                         <li><b>Evento: </b>{event.name}</li>
                         <li><b>Lugar: </b>{event.place}</li>
                         <li><b>Fecha: </b>{event.date}</li>
@@ -33,12 +32,16 @@ const UserEvents = () => {
                         <li><b>Edad maxima: </b>{event.ageMax}</li>
                         <li><b>Accesibilidad: </b>{event.isAccessible}</li>
                         <li><b>Precio: </b>{event.isFree}</li>
-                        
+                        <IconButton>
+                        <AddCircle />
+                    </IconButton>
                     </p>
+                    </div>
                 ))}
+               
             </ul>
     </div>
   )
 }
 
-export default UserEvents
+export default AllEvents

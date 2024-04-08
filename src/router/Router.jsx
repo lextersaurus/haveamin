@@ -6,6 +6,8 @@ import Home from "../pages/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
 /* import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
  */import UserEvents from "../pages/UserEvents/UserEvents";
+import AllEvents from "../pages/AllEvents/AllEvents";
+import EventCategory from "../components/EventCategory/EventCategory";
 
 export const router = createBrowserRouter([
     {
@@ -30,7 +32,15 @@ export const router = createBrowserRouter([
             /*     {
                     path: '/categories',
                     element: <CategoryEvent/>
-                }, */
+            }, */
+            {
+                path: '/events',
+                element: <AllEvents/>
+            },
+            {
+                path: 'category/:categoryId',
+                element: <EventCategory />
+            },
         ]
     },
     {

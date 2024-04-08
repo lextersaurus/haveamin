@@ -1,5 +1,6 @@
 import { Divider } from "@mui/material"
-import CategoryEvent from "../CategoryEvent/CategoryEvent"
+import CategoryEvent from "../CategoryEventList/CategoryEventList"
+import AllEvents from "../AllEvents/AllEvents"
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <>
       <CategoryEvent/>
       <Divider variant="middle" />
+      <AllEvents/>
     </>
   )
 }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { getCategoryEvent } from "../../services/eventService"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import './CategoryEvent.css'
+import './CategoryEventList.css'
 
 
 
@@ -24,7 +24,7 @@ const CategoryEvent = () => {
         <h2>Categorias de eventos</h2>
             <ul className="categoryList">
                 {categories.map(category => (
-                    <Link className="categoryListLi" key={category.id} to={'/categories/' + category.name} >
+                    <Link className="categoryListLi" key={category.id} to={'/category/' + category.id} >
                         <li>{category.name}</li>
                     </Link>
                 ))}
