@@ -1,20 +1,18 @@
 
-.categoryList {
+.categoryListLi {
     height: auto;
     width: 120px;
     background-color: #50B2C0;
     margin: 10px;
     border-radius: 10px;
     color: black;
-    align-items: center;
-    text-decoration: none;
+    text-decoration: none;  
 }
 
-
-ul{
+.categoryList  {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    list-style:none;
+    list-style: none;
     flex-wrap: wrap;
+    justify-content: center; 
 }

@@ -5,7 +5,6 @@ import CategoryEvent from "../CategoryEvent/CategoryEvent"
 const Home = () => {
   return (
     <>
-      Home
       <CategoryEvent/>
       <Divider variant="middle" />
     </>

@@ -4,7 +4,8 @@ import Signup from "../pages/Signup/Signup";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
-import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
+/* import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
+ */import UserEvents from "../pages/UserEvents/UserEvents";
 
 export const router = createBrowserRouter([
     {
@@ -21,7 +22,15 @@ export const router = createBrowserRouter([
                         return redirect('/auth/login')
                     }
                 }
-            }
+            },
+            {
+                path: '/miseventos',
+                element: <UserEvents/>
+            },
+            /*     {
+                    path: '/categories',
+                    element: <CategoryEvent/>
+                }, */
         ]
     },
     {
@@ -37,9 +46,6 @@ export const router = createBrowserRouter([
                 element: <Signup />
             },
         ]
-    },
-    {
-        path: '/categories',
-        element: <CategoryEvent/>
     }
+
 ])
