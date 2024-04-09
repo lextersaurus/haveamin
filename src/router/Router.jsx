@@ -4,6 +4,10 @@ import Signup from "../pages/Signup/Signup";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
+/* import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
+ */import UserEvents from "../pages/UserEvents/UserEvents";
+import AllEvents from "../components/AllEvents/AllEvents";
+import EventCategory from "../components/EventCategory/EventCategory";
 
 export const router = createBrowserRouter([
     {
@@ -20,7 +24,23 @@ export const router = createBrowserRouter([
                         return redirect('/auth/login')
                     }
                 }
-            }
+            },
+            {
+                path: '/miseventos',
+                element: <UserEvents/>
+            },
+            /*     {
+                    path: '/categories',
+                    element: <CategoryEvent/>
+            }, */
+            {
+                path: '/events',
+                element: <AllEvents/>
+            },
+            {
+                path: 'category/:categoryId',
+                element: <EventCategory />
+            },
         ]
     },
     {
@@ -37,4 +57,5 @@ export const router = createBrowserRouter([
             },
         ]
     }
+
 ])

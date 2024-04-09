@@ -1,0 +1,37 @@
+
+.eventListLi {
+    height: auto;
+    width: 800px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none; 
+    text-align: start; 
+    padding: 10px;
+}
+
+.eventList  {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.join-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.event-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
