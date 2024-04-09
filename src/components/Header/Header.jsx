@@ -70,6 +70,9 @@ const Header = () => {
       navigate('/miseventos');
     } else if (setting === 'Cerrar sesión') {
       handleLogout();
+    }else if (setting === 'Perfil') {
+      //navigate('perfil/:userId');
+      //console.log(userId)
     }
   }
 
