@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
                 element: <AllEvents/>
             },
             {
-                path: '/perfil/:userId',
+                path: '/miperfil',
                 element: <UserProfile/>
             },
             {

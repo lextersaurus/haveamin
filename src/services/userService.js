@@ -10,8 +10,8 @@ export const getUserEvent = async () =>{
     return data
  }
 
- export const getUserProfile = async (userId) =>{
-    const { data } = await api.get('/user/show/'+ userId,{
+ export const getUserProfile = async () =>{
+    const { data } = await api.get('/user/show', {
         headers: {
             'Authorization': localStorage.getItem('token')
         }

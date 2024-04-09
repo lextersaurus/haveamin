@@ -14,6 +14,8 @@ const Login = () => {
     const handleLogin = async () => {
         const response = await login({ email, password })
         localStorage.setItem('token', response.token)
+        localStorage.setItem('id', response.id)
+        console.log(response)
         navigate('/')
     }
 

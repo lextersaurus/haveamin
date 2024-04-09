@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react"
 import { getUserProfile } from "../../services/userService"
-import { useParams } from 'react-router-dom'
+
 import UserCard from "../../components/UserCard/UserCard"
 
 
 const UserProfile = () => {
     const [user, setUser] = useState([])
-    const { userId } = useParams()
 
     const handleUserProfile= async () => {
-          const response = await getUserProfile(userId)
+          const response = await getUserProfile()
          setUser(response)
       }
 
     useEffect(() => {
         handleUserProfile()
-    }, [userId])
+    }, [])
 
   return (
     <div>
