@@ -1,0 +1,46 @@
+.eventCard{
+    background-image:url('https://media.istockphoto.com/id/1448790717/es/foto/auriculares-mujer-negra-y-baile-feliz-en-la-ciudad-contra-fondo-rojo-del-edificio-m%C3%BAsica-baile.jpg?s=1024x1024&w=is&k=20&c=XEO_P7c5pXdM6X50IoJlMrY25F7IYCiZqQMfaV-kzBk=');
+    width: 10em;
+    height: 100px; 
+    background-size: contain;
+    background-repeat: no-repeat
+
+}
+
+
+.eventListLi {
+    height: auto;
+    width: 800px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none; 
+    text-align: start; 
+    padding: 10px;
+}
+
+.eventList  {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: left; 
+}
+
+.join-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.event-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
