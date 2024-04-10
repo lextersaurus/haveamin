@@ -8,6 +8,7 @@ import AuthLayout from "../layouts/AuthLayout";
  */import UserEvents from "../pages/UserEvents/UserEvents";
 import AllEvents from "../components/AllEvents/AllEvents";
 import EventCategory from "../components/EventCategory/EventCategory";
+import CreateEvent from "../pages/CreateEvent/CreateEvent";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
                 path: 'category/:categoryId',
                 element: <EventCategory />
             },
+            {
+                path: 'event/create',
+                element: <CreateEvent />
+            }
         ]
     },
     {

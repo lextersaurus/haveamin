@@ -90,7 +90,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            <a href="/"style={{ textDecoration: 'none' }}>Haveamin?</a>
+            <a href="/"style={{ textDecoration: 'none' }}>haveamin?</a>
           </Typography>
 
          
@@ -109,9 +109,8 @@ const Header = () => {
 
 {/* Menu Crear evento */}
           <Box >
-            <IconButton  >
-              <EditCalendar>
-              </EditCalendar>
+            <IconButton onClick={() => { navigate('/event/create')}}>
+              <EditCalendar />
             </IconButton>
           </Box>
 
