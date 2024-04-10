@@ -1,14 +1,13 @@
-import { Card, CardContent, Avatar, Typography, Box, Grid} from '@mui/material';
-import { Person, Star, StarBorder, StarHalf } from '@mui/icons-material';
+import { Card, CardContent, Avatar, Typography, Box, Grid, Rating, Stack, Divider} from '@mui/material';
 import PropTypes from 'prop-types'
 import { getUserEvent } from '../../services/userService';
 import { useEffect, useState } from 'react';
 import EventCard from '../EventCard/EventCard';
-import { Divider } from "@mui/material"
-
+import './UserCard.css'
 
 const UserCard = ({user}) => {
   const [events, setEvents] = useState([])
+
 
     const handleUserEvents= async () => {
           const response = await getUserEvent()
@@ -23,62 +22,62 @@ const UserCard = ({user}) => {
   return (
     
     <Card sx={{ height:'auto', margin: '15px', }}>
-      <Grid item xs={12} md={3}></Grid>
-     <CardContent sx={{ display: 'flex', justifyContent:'space-around', alignItems: 'center',}}>
-        
-        <Box sx={{width:700}}>
-        <Avatar
-          src="src/assets/img/images.jpg"
-          sx={{ width: 200, height: 200, marginRight: '20px',  }}
-        >
-          <Person fontSize="large" />
-        </Avatar>
-        <Typography>
-            <h2>{user.nickName}</h2>
-          </Typography>
-          <Star />
-          <Star />
-          <Star />
-          <StarHalf />
-          <StarBorder />
-        </Box>
-       
-        <Box>
-        <h3>Datos personales: </h3>
-          <Typography >
-            <b>Nombre: </b>{user.name}
-          </Typography>
-          <Typography>
-            <b>Apellido: </b>{user.lastName}
-          </Typography>
-          <Typography>
-            <b>Edad: </b>{user.age}
-          </Typography>
-          <Typography>
-            <b>Pais: </b>{user.country}
-          </Typography>
-        </Box>
+        <CardContent>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={4}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Avatar
+                    src="src/assets/img/usuarop.avif"
+                    sx={{ width: 200, height: 200, marginBottom: '20px', }}>
+                </Avatar>
+                <Typography variant="h5" component="h2">
+                  {user.nickName}
+                </Typography>
+                <Stack spacing={1}>
+                  <Rating name="size-large" defaultValue={2} size="large" />
+                </Stack>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center' }}>
+              <Typography>
+                <b>Nombre: </b>{user.name}
+              </Typography>
+              <Typography>
+                <b>Apellido: </b>{user.lastName}
+              </Typography>
+              <Typography>
+                <b>Edad: </b>{user.age}
+              </Typography>
+              <Typography>
+                <b>País: </b>{user.country}
+              </Typography>
+            </Box>
+          </Grid>
+            <Grid item tem xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center' }}>
+                <Typography variant="h6" component="h3">
+                  Sobre mí: 
+                </Typography>
+                <Typography sx={{ textAlign: 'justify' }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </CardContent>
 
-        <Box>
-        <h3>Sobre mí</h3>
-     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </Box>
-        
-      </CardContent>
-  <Divider variant="middle"/>
+      <Divider variant="middle"/>
 
       <CardContent >
-  
-  <div style={{ marginRight: '20px' }}>
-    <h3>Mis eventos</h3>
-    {events.map(event => (
-      <EventCard key={event.id} event={event}/>
-    ))}
-  </div>
-
-</CardContent>
-
-     
+        <div>
+          <h3>Eventos creados</h3>
+          <ul className="list">
+              {events.map(event => (<EventCard key={event.id} event={event}/>))}
+          </ul>
+        </div>
+        </CardContent>
     </Card>
   )
 }
