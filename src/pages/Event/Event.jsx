@@ -7,7 +7,7 @@ import {
   CardActions,
   Button,
   CardHeader,
-  Box
+  Box,
 } from "@mui/material";
 import { Place, Event, Accessible, Check, Close } from "@mui/icons-material";
 import { joinEvent, quitEvent } from "../../services/eventService";
@@ -65,63 +65,98 @@ const EventPage = () => {
   const isUserJoined = events.some((userEvent) => userEvent.id === event.id);
 
   return (
-    <>
-      <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Card className="eventCard"></Card>
-        <Card sx={{width:'20%',display: 'flex', justifyContent: 'center', alignItems:'center'}}>
-          <CardHeader title={event.name} />
+    
+      <Box
+        sx={{
+          width: "100vw",
+          display: "flex",
+          apgnItems: "center",
+          flexDirection: "column",
+          padding: "16px",
+        }}
+      >
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            minWidth: "90%",
+          }}
+        >
+          <div className="eventCard"></div>
+          <Card
+            sx={{ display: "flex", width: "90%", justifyContent: "center" }}
+          >
+            <CardHeader title={event.name} />
+          </Card>
+        </Box>
+
+        <Card sx={{marginTop:'16px' }}>
+
+
+          <CardContent  sx={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign:'left',
+                justifyContent: "center",
+                margin: "16px",
+                padding: "40px",
+                alignItems:'end',
+              }}>
+            
+              <div className="photo"></div>
+                <h2> Nombre Usuario</h2>
+              
+              <p>
+                <Place sx={{ fontSize: "medium" }} /> {event.place}
+              </p>
+              <p>
+                <Event sx={{ fontSize: "medium" }} /> {formatDate(event.date)}
+              </p>
+              <p>
+                <b>Rango de edad: </b>
+                {event.ageMin} - {event.ageMax}
+              </p>
+              {!event.isFree ? (
+                <p className="red">Evento de pago</p>
+              ) : (
+                <p className="green">Evento gratuito</p>
+              )}
+              <div>
+                <Accessible />{" "}
+                {event.isAccessible ? (
+                  <Check color="success" />
+                ) : (
+                  <Close color="error" />
+                )}
+              </div>
+              
+           
+          </CardContent>
+          <CardActions sx={{display:'flex', justifyContent:'end', marginRight:'40px' }}>
+            {isUserJoined ? (
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  handleOnQuit(event.id);
+                }}
+              >
+                Salir
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleOnJoin(event.id);
+                }}
+              >
+                Unirse
+              </Button>
+            )}
+          </CardActions>
         </Card>
       </Box>
-
-      <Card>
-        <CardContent>
-          <p>
-            <Place sx={{ fontSize: "medium" }} /> {event.place}
-          </p>
-          <p>
-            <Event sx={{ fontSize: "medium" }} /> {event.date}
-          </p>
-          <p>
-            <b>Rango de edad: </b>
-            {event.ageMin} - {event.ageMax}
-          </p>
-          {!event.isFree ? (
-            <p className="red">Evento de pago</p>
-          ) : (
-            <p className="green">Evento gratuito</p>
-          )}
-          <div>
-            <Accessible />{" "}
-            {event.isAccessible ? (
-              <Check color="success" />
-            ) : (
-              <Close color="error" />
-            )}
-          </div>
-        </CardContent>
-        <CardActions>
-          {isUserJoined ? (
-            <Button
-              variant="outlined"
-              onClick={() => {
-                handleOnQuit(event.id);
-              }}
-            >
-              Salir
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              onClick={() => {
-                handleOnJoin(event.id);
-              }}
-            >
-              Unirse
-            </Button>
-          )}
-        </CardActions>
-      </Card>
-    </>
+    
   );
 };
 

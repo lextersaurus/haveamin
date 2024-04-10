@@ -10,12 +10,14 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { getUserEvent } from '../../services/userService'
 import { joinEvent, quitEvent } from '../../services/eventService'
+import { useNavigate } from "react-router-dom";
 
 import './EventCard.css'
 
 const EventCard = ({event}) => {
     const [events, setEvents] = useState([])
     const [userJoin, setUserJoin] = useState()
+    const navigate= useNavigate()
 
     const handleUserEvents= async () => {
         const response = await getUserEvent()
@@ -49,7 +51,7 @@ const EventCard = ({event}) => {
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
         </CardContent>
         <CardActions className='join-btn'>
-            <Button color='secondary'>Ver detalles</Button>
+            <Button color='secondary' onClick={()=>{navigate('/event/'+event.id)}}>Ver detalles</Button>
             {isUserJoined ?
             <Button variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
             <Button variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
