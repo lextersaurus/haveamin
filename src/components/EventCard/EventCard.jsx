@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent } from '@mui/material'
+import { Button, Card, CardActions, CardContent, Skeleton } from '@mui/material'
 import {
     Place,
     Event,
@@ -39,6 +39,8 @@ const EventCard = ({event}) => {
     const isUserJoined = events.some((userEvent) => userEvent.id === event.id)
 
   return (
+    <>
+    {events.length !== 0 ?
     <Card color='background.paper' className="eventListLi" sx={{ minWidth: 275, maxWidth: 500 }} >
         <CardContent>
             <h3>{event.name}</h3>
@@ -54,7 +56,15 @@ const EventCard = ({event}) => {
             <Button variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
             <Button variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
         </CardActions>
-    </Card>
+    </Card> :
+    <Skeleton
+        variant='rectangular'
+        className='eventListLi'
+        width={500}
+        height={360}
+    />
+    }    
+    </>
   )
 }
 
