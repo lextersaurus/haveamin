@@ -4,10 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getEventByCategory } from '../../services/eventService'
 import { getCategory } from '../../services/categoryService'
 import EventCard from '../EventCard/EventCard'
-
-import './Category.css'
 import Loading from '../Loading/Loading'
 import CategoryEvent from '../CategoryEventList/CategoryEventList'
+
+import './EventCategory.css'
 
 const EventCategory = () => {
     const [isLoading, setIsLoading] = useState(true)
