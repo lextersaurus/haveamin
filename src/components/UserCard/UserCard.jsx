@@ -24,6 +24,7 @@ const UserCard = ({user}) => {
     <Card sx={{ height:'auto', margin: '15px', }}>
         <CardContent>
           <Grid container spacing={3}>
+
             <Grid item xs={12} md={4}>
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Avatar
@@ -33,11 +34,13 @@ const UserCard = ({user}) => {
                 <Typography variant="h5" component="h2">
                   {user.nickName}
                 </Typography>
+                
                 <Stack spacing={1}>
-                  <Rating name="size-large" defaultValue={2} size="large" />
+                  <Rating name="size-large" defaultValue={4} size="large" />
                 </Stack>
               </Box>
             </Grid>
+
             <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center' }}>
               <Typography>
@@ -54,17 +57,17 @@ const UserCard = ({user}) => {
               </Typography>
             </Box>
           </Grid>
+
             <Grid item tem xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center' }}>
                 <Typography variant="h6" component="h3">
                   Sobre mí: 
                 </Typography>
                 <Typography sx={{ textAlign: 'justify' }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </Typography>
+                Entusiasta del tiempo libre compartido, disfruto organizando y participando en quedadas para eventos culturales, deportivos o sociales. ¡Siempre listo/a para explorar nuevas experiencias y conectar con gente afín!</Typography>
               </Box>
             </Grid>
+
           </Grid>
         </CardContent>
 
