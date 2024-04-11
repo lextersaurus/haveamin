@@ -9,3 +9,12 @@ export const getUserEvent = async () =>{
     console.log(data) */
     return data
  }
+
+ export const getUserProfile = async () =>{
+    const { data } = await api.get('/user/show', {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+    return data
+}

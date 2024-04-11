@@ -9,6 +9,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import AllEvents from "../components/AllEvents/AllEvents";
 import EventCategory from "../components/EventCategory/EventCategory";
 import EventPage from "../pages/Event/Event";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: '/events',
                 element: <AllEvents/>
+            },
+            {
+                path: '/miperfil',
+                element: <UserProfile/>
             },
             {
                 path: 'category/:categoryId',
