@@ -14,3 +14,7 @@ body{
   display: grid;
   place-items: center;
 }
+
+.anim {
+  view-transition-name: card;
+}

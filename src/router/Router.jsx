@@ -10,6 +10,7 @@ import AllEvents from "../components/AllEvents/AllEvents";
 import EventCategory from "../components/EventCategory/EventCategory";
 import EventPage from "../pages/Event/Event";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import CreateEvent from "../pages/CreateEvent/CreateEvent";
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
                 path: 'event/:eventId',
                 element: <EventPage />
             },
+            {
+                path: 'event/create',
+                element: <CreateEvent />
+            }
         ]
     },
     {

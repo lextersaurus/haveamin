@@ -1,25 +1,25 @@
-import { api } from "./config"
+import { api } from './config'
 
-export const getCategoryEvent = async () =>{
+export const getCategoryEvent = async () => {
     const { data } = await api.get('/category/showall',{
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        })
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
     return data
 }
 
-export const getAllEvents = async () =>{
+export const getAllEvents = async () => {
     const { data } = await api.get('/event/showall',{
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        })
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
     return data
 }
 
-export const getEventByCategory = async (categoryId) =>{
-    const { data } = await api.get('/category/'+ categoryId +'/events',{
+export const getEventByCategory = async (categoryId) => {
+    const { data } = await api.get(`/category/${categoryId}/events`,{
         headers: {
             'Authorization': localStorage.getItem('token')
         }
@@ -47,6 +47,15 @@ export const quitEvent = async (eventId) => {
 
 export const getOneEvent = async(eventId) =>{
     const{data} = await api.get('/event/show/'+ eventId, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+    return data
+}
+
+export const createEvent = async (eventData) => {
+    const { data } = await api.post('/event/create', eventData, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }

@@ -116,9 +116,8 @@ const Header = () => {
 
 {/* Menu Crear evento */}
           <Box >
-            <IconButton  >
-              <EditCalendar>
-              </EditCalendar>
+            <IconButton onClick={() => { navigate('/event/create')}}>
+              <EditCalendar />
             </IconButton>
           </Box>
 
