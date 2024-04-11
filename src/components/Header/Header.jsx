@@ -61,6 +61,7 @@ const Header = () => {
 
   const handleLogout = () => {
       localStorage.removeItem('token')
+      localStorage.removeItem('id')
       navigate('/') 
   }
 
@@ -92,7 +93,6 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            {/* <a href="/"style={{ textDecoration: 'none' }}>Haveamin?</a> */}
             <a href="/"style={{ textDecoration: 'none' }}>
     <img src="src/assets/logo2.png" style={{ width: '175px', verticalAlign: 'middle' }}/>
     

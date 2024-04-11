@@ -1,6 +1,6 @@
 import { Card, CardContent, Avatar, Typography, Box, Grid, Rating, Stack, Divider} from '@mui/material';
 import PropTypes from 'prop-types'
-import { getUserEvent } from '../../services/userService';
+import { getCreatedEvents } from '../../services/userService';
 import { useEffect, useState } from 'react';
 import EventCard from '../EventCard/EventCard';
 import './UserCard.css'
@@ -9,14 +9,13 @@ const UserCard = ({user}) => {
   const [events, setEvents] = useState([])
 
 
-    const handleUserEvents= async () => {
-          const response = await getUserEvent()
-         /*  console.log(response) */
-         setEvents(response)
+    const handleCreatedEvents = async () => {
+        const response = await getCreatedEvents(localStorage.id)
+        setEvents(response)
       }
 
     useEffect(() => {
-        handleUserEvents()
+      handleCreatedEvents()
     }, [])
 
   return (
@@ -53,7 +52,7 @@ const UserCard = ({user}) => {
                 <b>Edad: </b>{user.age}
               </Typography>
               <Typography>
-                <b>País: </b>{user.country}
+                <b>Provincia: </b>{user.country}
               </Typography>
             </Box>
           </Grid>
@@ -85,8 +84,8 @@ const UserCard = ({user}) => {
   )
 }
 
-UserCard.prototype = {
- user: PropTypes.object,
+UserCard.propTypes = {
+  user: PropTypes.object,
 }
 
 export default UserCard;

@@ -24,5 +24,6 @@ export const getCreatedEvents = async (userId) => {
             'Authorization': localStorage.getItem('token')
         }
     })
+    localStorage.setItem('id', data.id)
     return data
 }
