@@ -36,7 +36,7 @@ const UserCard = ({user}) => {
                 </Typography>
                 
                 <Stack spacing={1}>
-                  <Rating name="size-large" defaultValue={4} size="large" />
+                  <Rating name="size-large" defaultValue={4} size="large" disabled />
                 </Stack>
               </Box>
             </Grid>
