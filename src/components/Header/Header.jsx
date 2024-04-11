@@ -1,10 +1,9 @@
-import { AccountCircle, EditCalendar } from '@mui/icons-material';
-import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, Box, Container, IconButton, InputBase, Menu, MenuItem, Toolbar, Tooltip, Typography, alpha, styled } from "@mui/material";
+import { AccountCircle, EditCalendar } from '@mui/icons-material'
+import SearchIcon from '@mui/icons-material/Search'
+import { AppBar, Box, Container, IconButton, InputBase, Menu, MenuItem, Toolbar, Tooltip, Typography, alpha, styled } from '@mui/material'
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
-const settings = ['Perfil', 'Mis Eventos', 'Cerrar sesión'];
-
+import { useNavigate } from 'react-router-dom'
+const settings = ['Perfil', 'Mis eventos', 'Cerrar sesión']
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -36,7 +35,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     [theme.breakpoints.up('sm')]: {
@@ -49,39 +47,39 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 const Header = () => {
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null)
   const navigate = useNavigate()
 
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorElUser(event.currentTarget)
   }
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(null)
   }
 
   const handleLogout = () => {
-      localStorage.removeItem('token')
-      localStorage.removeItem('id')
-      navigate('/') 
+    localStorage.removeItem('token')
+    localStorage.removeItem('id')
+    navigate('/')
   }
 
   const handleMenuClick = (setting) => {
-    handleCloseUserMenu();
-    if (setting === 'Mis Eventos') {
-      navigate('/miseventos');
+    handleCloseUserMenu()
+    if (setting === 'Mis eventos') {
+      navigate('/miseventos')
     } else if (setting === 'Cerrar sesión') {
-      handleLogout();
-    }else if (setting === 'Perfil') {
+      handleLogout()
+    } else if (setting === 'Perfil') {
       navigate('/miperfil')
     }
   }
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="100vw">
+    <AppBar position='sticky'>
+      <Container maxWidth='100vw'>
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant='h6'
             noWrap
             sx={{
               mr: 2,
@@ -93,76 +91,46 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            <a href="/"style={{ textDecoration: 'none' }}>
-    <img src="src/assets/logo2.png" style={{ width: '175px', verticalAlign: 'middle' }}/>
-    
-</a>
+            <a href='/' style={{ textDecoration: 'none' }}>
+              <img src='src/assets/logo2.png' style={{ width: '175px', verticalAlign: 'middle' }} />
+
+            </a>
 
           </Typography>
 
-         
-{/* Barra de busqueda */} 
+
+          {/* Barra de busqueda */}
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Buscar..."
-                  inputProps={{ 'aria-label': 'search' }}
-                />
-              </Search>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder='Buscar...'
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
           </Box>
 
-{/* Menu Crear evento */}
+          {/* Menu Crear evento */}
           <Box >
-            <IconButton onClick={() => { navigate('/event/create')}}>
+            <IconButton onClick={() => { navigate('/event/create') }}>
               <EditCalendar />
             </IconButton>
           </Box>
 
 
-{/* Menu usuario */}
+          {/* Menu usuario */}
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} >
                 <AccountCircle>
                 </AccountCircle>
               </IconButton>
             </Tooltip>
             <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={() => handleMenuClick(setting)}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-          </Box>
-
-        {/*   <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
               sx={{ mt: '45px' }}
-              id="menu-appbar"
+              id='menu-appbar'
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
@@ -177,12 +145,12 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={setting === 'Cerrar sesión' ? handleLogout : handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting} onClick={() => handleMenuClick(setting)}>
+                  <Typography textAlign='center'>{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box> */}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
