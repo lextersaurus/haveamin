@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent } from '@mui/material'
+import { Button, Card, CardActions, CardContent, Skeleton } from '@mui/material'
 import {
     Place,
     Event,
@@ -10,12 +10,14 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { getUserEvent } from '../../services/userService'
 import { joinEvent, quitEvent } from '../../services/eventService'
+import { useNavigate } from "react-router-dom";
 
 import './EventCard.css'
 
 const EventCard = ({event}) => {
     const [events, setEvents] = useState([])
     const [userJoin, setUserJoin] = useState()
+    const navigate= useNavigate()
 
     const handleUserEvents= async () => {
         const response = await getUserEvent()
@@ -39,6 +41,8 @@ const EventCard = ({event}) => {
     const isUserJoined = events.some((userEvent) => userEvent.id === event.id)
 
   return (
+    <>
+    {events.length !== 0 ?
     <Card color='background.paper' className="eventListLi" sx={{ minWidth: 275, maxWidth: 500 }} >
         <CardContent>
             <h3>{event.name}</h3>
@@ -49,12 +53,20 @@ const EventCard = ({event}) => {
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
         </CardContent>
         <CardActions className='join-btn'>
-            <Button color='secondary'>Ver detalles</Button>
+            <Button color='secondary' onClick={()=>{navigate('/event/'+event.id)}}>Ver detalles</Button>
             {isUserJoined ?
             <Button variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
             <Button variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
         </CardActions>
-    </Card>
+    </Card> :
+    <Skeleton
+        variant='rectangular'
+        className='eventListLi'
+        width={500}
+        height={360}
+    />
+    }    
+    </>
   )
 }
 
