@@ -8,4 +8,25 @@
 
 .create-card {
     width: 80%;
+    max-width: 1000px;
+    padding: 24px;
+}
+
+.checkbox {
+    border-radius: 8px;
+    margin: 8px 0 !important;
+    padding-right: 16px;
+
+    background-color: #f1f1f1;
+
+    &:has(.Mui-checked) {
+        background-color: #50B2C0;
+        color: white;
+    }
+
+    .Mui-checked {
+        svg {
+            color: white;
+        }
+    }
 }
