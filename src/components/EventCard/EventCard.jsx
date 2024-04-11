@@ -53,21 +53,21 @@ const EventCard = ({event}) => {
   return (
     <>
     {events.length !== 0 ?
-    <Card color='background.paper' className="eventListLi" sx={{ minWidth: 275, maxWidth: 500 }} >
+    <Card color='background.paper' className="eventListLi" sx={{ display: 'flex', flexDirection: 'column', minWidth: 275, maxWidth: 500 }}>
         <CardContent>
             <h3>{event.name}</h3>
             <p><Place sx={{ fontSize: 'medium'}}/> {event.place}</p>
             <p><Event sx={{ fontSize: 'medium'}}/> {formatDate(event.date)}</p>
             <p><b>Rango de edad: </b>{event.ageMin} - {event.ageMax}</p>
-            {!event.isFree ? <p className='red'>Evento de pago</p> : <p className='green'>Evento gratuito</p>}
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
         </CardContent>
-        <CardActions className='join-btn'>
+        <CardActions className='join-btn' sx={{ marginTop: 'auto' }}>
             <Button color='secondary'>Ver detalles</Button>
             {isUserJoined ?
             <Button variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
             <Button variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
         </CardActions>
+        {!event.isFree ? <p className='free-text red-field'>Evento de pago</p> : <p className='free-text green-field'>Evento gratuito</p>}
     </Card> :
     <Skeleton
         variant='rectangular'

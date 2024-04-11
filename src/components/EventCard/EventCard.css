@@ -1,12 +1,12 @@
 
 .eventListLi {
+    position: relative;
     height: auto;
     width: 800px;
     margin: 10px;
     border-radius: 10px;
     text-decoration: none; 
     text-align: start; 
-    padding: 10px;
 }
 
 .eventList  {
@@ -34,4 +34,41 @@
 
 .red {
     color: red;
+}
+
+/* .red-field {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: indianred;
+    margin: 0;
+    padding: 8px 16px;
+    color: white;
+}
+
+.green-field {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: darkseagreen;
+    margin: 0;
+    padding: 8px 16px;
+    color: white;
+} */
+
+.free-text {
+    margin-top: 8px !important;
+    padding: 8px 16px;
+    color: white;
+    margin: 0;
+
+    &.green-field {
+        background-color: #a3ccae;
+    }
+
+    &.red-field {
+        background-color: #e37179;
+    }
 }
