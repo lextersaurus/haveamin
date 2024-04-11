@@ -28,7 +28,8 @@ const CreateEvent = () => {
         ageMax: 0,
         isAccessible: false,
         isFree: false,
-        category: ''
+        category: '',
+        description: ''
     })
 
     const handleCategories = async () => {
@@ -71,6 +72,7 @@ const CreateEvent = () => {
                             multiline
                             rows={5}
                             sx={{ marginBottom: '24px' }}
+                            onChange={(e) => handleInputChange('description', e.target.value)}
                         />
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <FormGroup sx={{ width: '20%'}}>
