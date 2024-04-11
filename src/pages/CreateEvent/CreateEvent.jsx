@@ -100,7 +100,7 @@ const CreateEvent = () => {
                                 sx={{ marginBottom: '24px' }}
                             >
                                 <MenuItem value={''}>--Selecciona una categoría--</MenuItem>
-                                {categories.map((category) => (<MenuItem key={category.id} value={`${category.name}`}>{category.name}</MenuItem>))}
+                                {categories.map((category) => (<MenuItem key={category.id} value={`${category.id}`}>{category.name}</MenuItem>))}
                             </Select>
                         </FormControl>
                         <TextField

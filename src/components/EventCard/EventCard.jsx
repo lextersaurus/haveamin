@@ -13,6 +13,18 @@ import { joinEvent, quitEvent } from '../../services/eventService'
 
 import './EventCard.css'
 
+const formatDate = (date) => {
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    }
+    const formattedDate = new Date(date)
+    return formattedDate.toLocaleString('es-ES', options)
+}
+
 const EventCard = ({event}) => {
     const [events, setEvents] = useState([])
     const [userJoin, setUserJoin] = useState()
@@ -45,7 +57,7 @@ const EventCard = ({event}) => {
         <CardContent>
             <h3>{event.name}</h3>
             <p><Place sx={{ fontSize: 'medium'}}/> {event.place}</p>
-            <p><Event sx={{ fontSize: 'medium'}}/> {event.date}</p>
+            <p><Event sx={{ fontSize: 'medium'}}/> {formatDate(event.date)}</p>
             <p><b>Rango de edad: </b>{event.ageMin} - {event.ageMax}</p>
             {!event.isFree ? <p className='red'>Evento de pago</p> : <p className='green'>Evento gratuito</p>}
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
