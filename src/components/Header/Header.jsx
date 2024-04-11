@@ -70,6 +70,8 @@ const Header = () => {
       navigate('/miseventos');
     } else if (setting === 'Cerrar sesión') {
       handleLogout();
+    }else if (setting === 'Perfil') {
+      navigate('/miperfil')
     }
   }
 
@@ -90,7 +92,12 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            <a href="/"style={{ textDecoration: 'none' }}>haveamin?</a>
+            {/* <a href="/"style={{ textDecoration: 'none' }}>Haveamin?</a> */}
+            <a href="/"style={{ textDecoration: 'none' }}>
+    <img src="src/assets/logo2.png" style={{ width: '175px', verticalAlign: 'middle' }}/>
+    
+</a>
+
           </Typography>
 
          

@@ -16,6 +16,8 @@ const Login = () => {
     try {
       const response = await login({ email, password })
       localStorage.setItem('token', response.token)
+        localStorage.setItem('id', response.id)
+        console.log(response)
       navigate('/')
     } catch (error) {
       setErrorMessage('¡Parece que no hemos podido iniciar sesión! Comprueba que tu e-mail y contraseña son correctos e inténtalo de nuevo.')

@@ -45,6 +45,15 @@ export const quitEvent = async (eventId) => {
     return data
 }
 
+export const getOneEvent = async(eventId) =>{
+    const{data} = await api.get('/event/show/'+ eventId, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+    return data
+}
+
 export const createEvent = async (eventData) => {
     const { data } = await api.post('/event/create', eventData, {
         headers: {
