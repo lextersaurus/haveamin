@@ -44,3 +44,13 @@ export const quitEvent = async (eventId) => {
     })
     return data
 }
+
+export const createEvent = async (eventData) => {
+    const { data } = await api.post('/event/create', eventData, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+    console.log(data)
+    return data
+}

@@ -1,44 +1,50 @@
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+import 'dayjs/locale/es'
+
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 import { Box, Button, Card, CardActions, CardContent, CardHeader, Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import { useEffect, useState } from 'react'
-import { getCategoryEvent } from '../../services/eventService'
-import 'dayjs/locale/es'
-import dayjs from 'dayjs'
+import { createEvent, getCategoryEvent } from '../../services/eventService'
+import { DateTimePicker } from '@mui/x-date-pickers';
 
 import './CreateEvent.css'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const CreateEvent = () => {
     const [categories, setCategories] = useState([])
     const [name, setName] = useState('')
     const [place, setPlace] = useState('')
     const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
     const [ageMin, setAgeMin] = useState(0)
     const [ageMax, setAgeMax] = useState(0)
     const [isAccessible, setIsAccessible] = useState(false)
     const [isFree, setIsFree] = useState(false)
-    const [newCategory, setNewCategory] = useState('')
+    const [category, setCategory] = useState('')
 
-    const handleCategory = async () => {
+    const handleCategories = async () => {
         const response = await getCategoryEvent()
        setCategories(response)
     }
 
-    const handleNewCategory = async (e) => {
-        setNewCategory(e.target.value)
+    const handleCategory = async (e) => {
+        setCategory(e.target.value)
     }
 
     const handleEventCreation = () => {
-        const response = {name, place, date, ageMin, ageMax, isAccessible, isFree, newCategory}
-        console.log(response)
+        const eventData = { name, place, date, ageMin, ageMax, isAccessible, isFree }
+        console.table(eventData)
+        createEvent(eventData)
     }
 
     useEffect(() => {
-        handleCategory()
+        handleCategories()
     }, [])
 
     const navigate = useNavigate()
@@ -51,7 +57,7 @@ const CreateEvent = () => {
                     <Box sx={{ display: 'flex', flexDirection: 'column', width: '60%'}}>
                         <TextField
                             required
-                            label='Título del evento'
+                            label='Nombre del evento'
                             variant='outlined'
                             sx={{ marginBottom: '24px' }}
                             onChange={(e) => setName(e.target.value)}
@@ -64,23 +70,21 @@ const CreateEvent = () => {
                         />
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <FormGroup sx={{ width: '20%'}}>
-                                <FormControlLabel control={<Checkbox />} label='Gratuito'/>
-                                <FormControlLabel control={<Checkbox />} label='Accesible'/>
+                                <FormControlLabel control={<Checkbox />} label='Gratuito' onChange={(e) => {setIsFree(e.target.checked)}}/>
+                                <FormControlLabel control={<Checkbox />} label='Accesible' onChange={(e) => {setIsAccessible(e.target.checked)}}/>
                             </FormGroup>
                             <Box sx={{ display: 'flex' }}>
-                                <Box sx={{ width: '100%', marginLeft: '24px' }}>
-                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        <DatePicker
-                                            required label='Fecha *'
-                                            onChange={(e) => setDate(e.target.value)}
-                                        />
-                                    </LocalizationProvider>                        
-                                </Box>
-                                <Box sx={{ width: '100%', marginLeft: '24px' }}>
-                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        <TimePicker required label='Hora *' onChange={(e) => setTime(e.target.value)}/>
-                                    </LocalizationProvider>
-                                </Box>
+                                <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
+                                    <DateTimePicker
+                                        required
+                                        label='Fecha y hora *'
+                                        timezone='UTC'
+                                        onChange={(e) => {
+                                            setDate(e.toISOString())
+                                            console.log(date);
+                                        }}   
+                                    />
+                                </LocalizationProvider>
                             </Box>
                         </Box>
                     </Box>
@@ -89,9 +93,9 @@ const CreateEvent = () => {
                             <InputLabel required>Categoría</InputLabel>
                             <Select
                                 required
-                                value={newCategory}
+                                value={category}
                                 label='Categoría'
-                                onChange={handleNewCategory}
+                                onChange={handleCategory}
                                 sx={{ marginBottom: '24px' }}
                             >
                                 <MenuItem value={''}>--Selecciona una categoría--</MenuItem>
