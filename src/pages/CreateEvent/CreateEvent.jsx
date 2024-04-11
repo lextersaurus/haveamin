@@ -19,27 +19,31 @@ dayjs.extend(timezone)
 
 const CreateEvent = () => {
     const [categories, setCategories] = useState([])
-    const [name, setName] = useState('')
-    const [place, setPlace] = useState('')
-    const [date, setDate] = useState('')
-    const [ageMin, setAgeMin] = useState(0)
-    const [ageMax, setAgeMax] = useState(0)
-    const [isAccessible, setIsAccessible] = useState(false)
-    const [isFree, setIsFree] = useState(false)
-    const [category, setCategory] = useState('')
+
+    const [eventData, setEventData] = useState({
+        name: '',
+        place: '',
+        date: '',
+        ageMin: 0,
+        ageMax: 0,
+        isAccessible: false,
+        isFree: false,
+        category: ''
+    })
 
     const handleCategories = async () => {
         const response = await getCategoryEvent()
-       setCategories(response)
+        setCategories(response)
     }
 
-    const handleCategory = async (e) => {
-        setCategory(e.target.value)
+    const handleInputChange = (propName, value) => {
+        setEventData({
+            ...eventData,
+            [propName]: value,
+        })
     }
 
     const handleEventCreation = () => {
-        const eventData = { name, place, date, ageMin, ageMax, isAccessible, isFree }
-        console.table(eventData)
         createEvent(eventData)
     }
 
@@ -60,7 +64,7 @@ const CreateEvent = () => {
                             label='Nombre del evento'
                             variant='outlined'
                             sx={{ marginBottom: '24px' }}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => handleInputChange('name', e.target.value)}
                         />
                         <TextField
                             label='Descripción (Opcional)'
@@ -70,8 +74,8 @@ const CreateEvent = () => {
                         />
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <FormGroup sx={{ width: '20%'}}>
-                                <FormControlLabel control={<Checkbox />} label='Gratuito' onChange={(e) => {setIsFree(e.target.checked)}}/>
-                                <FormControlLabel control={<Checkbox />} label='Accesible' onChange={(e) => {setIsAccessible(e.target.checked)}}/>
+                                <FormControlLabel control={<Checkbox />} label='Gratuito' onChange={(e) => {handleInputChange('isFree', e.target.checked)}}/>
+                                <FormControlLabel control={<Checkbox />} label='Accesible' onChange={(e) => {handleInputChange('isAccessible', e.target.checked)}}/>
                             </FormGroup>
                             <Box sx={{ display: 'flex' }}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es'>
@@ -79,10 +83,7 @@ const CreateEvent = () => {
                                         required
                                         label='Fecha y hora *'
                                         timezone='UTC'
-                                        onChange={(e) => {
-                                            setDate(e.toISOString())
-                                            console.log(date);
-                                        }}   
+                                        onChange={(e) => {handleInputChange('date', e.toISOString())}}   
                                     />
                                 </LocalizationProvider>
                             </Box>
@@ -93,9 +94,9 @@ const CreateEvent = () => {
                             <InputLabel required>Categoría</InputLabel>
                             <Select
                                 required
-                                value={category}
+                                value={eventData.category}
                                 label='Categoría'
-                                onChange={handleCategory}
+                                onChange={(e) => handleInputChange('category', e.target.value)}
                                 sx={{ marginBottom: '24px' }}
                             >
                                 <MenuItem value={''}>--Selecciona una categoría--</MenuItem>
@@ -108,7 +109,7 @@ const CreateEvent = () => {
                             multiline
                             variant='outlined'
                             sx={{ marginBottom: '24px' }}
-                            onChange={(e) => setPlace(e.target.value)}
+                            onChange={(e) => handleInputChange('place', e.target.value)}
                         />                            
                         <TextField
                             required
@@ -116,14 +117,14 @@ const CreateEvent = () => {
                             label='Edad mínima'
                             variant='outlined'
                             sx={{ marginBottom: '24px' }}
-                            onChange={(e) => setAgeMin(e.target.value)}
+                            onChange={(e) => handleInputChange('ageMin', e.target.value)}
                         />
                         <TextField
                             required
                             type='number'
                             label='Edad máxima'
                             variant='outlined'
-                            onChange={(e) => setAgeMax(e.target.value)}
+                            onChange={(e) => handleInputChange('ageMax', e.target.value)}
                         />
                     </Box>
                 </CardContent>
