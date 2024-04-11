@@ -1,0 +1,9 @@
+.searchBar {
+    width: 100%;
+    text-align: center;
+
+}
+.searchBar input{
+    width: 75%;
+
+}

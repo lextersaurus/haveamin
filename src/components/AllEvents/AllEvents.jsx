@@ -4,26 +4,32 @@ import './AllEvents.css'
 import EventCard from "../EventCard/EventCard"
 
 
-const AllEvents = () => {
-    const [events, setEvents] = useState([])
+const AllEvents = ({ searchQuery }) => {
+  const [events, setEvents] = useState([])
 
-    const handleUserEvents= async () => {
-          const response = await getAllEvents()
-         /*  console.log(response) */
-         setEvents(response)
-      }
+  const handleUserEvents= async () => {
+      const response = await getAllEvents()
+      setEvents(response)
+  }
 
-    useEffect(() => {
-        handleUserEvents()
-    }, [])
+  useEffect(() => {
+      handleUserEvents()
+  }, [])
+
+  // Filtrar eventos basados en el término de búsqueda
+  
+  
+  const filteredEvents = events.filter(event =>
+      event.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );console.log(searchQuery)
 
   return (
-    <div>
-      <h3>Todos los eventos</h3>
-      <ul className="eventList">
-          {events.map(event => (<EventCard key={event.id} event={event}/>))}
-      </ul>
-    </div>
+      <div>
+          <h3>Todos los eventos</h3>
+          <ul className="eventList">
+              {filteredEvents.map(event => (<EventCard key={event.id} event={event}/>))}
+          </ul>
+      </div>
   )
 }
 

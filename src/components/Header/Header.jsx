@@ -50,7 +50,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       '&:focus': {
         width: '90ch',
       },
-      
     },
   },
 }))
@@ -79,6 +78,11 @@ const Header = () => {
       handleLogout();
     }
   }
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (event) => {
+      setSearchQuery(event.target.value);
+  }
 
   return (
     <AppBar position="sticky">
@@ -103,15 +107,17 @@ const Header = () => {
          
 {/* Barra de busqueda */} 
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-              <Search >
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Buscar..."
-                  inputProps={{ 'aria-label': 'search' }}
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Buscar..."
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchQuery}
+                onChange={handleSearchChange}
                 />
-              </Search>
+            </Search>
           </Box>
 
 {/* Menu Crear evento */}
