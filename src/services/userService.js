@@ -26,3 +26,12 @@ export const getCreatedEvents = async (userId) => {
     })
     return data
 }
+
+export const getUserData = async (userId) => {
+    const { data } = await api.get(`/user/show/${userId}`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+    return { data }
+}
