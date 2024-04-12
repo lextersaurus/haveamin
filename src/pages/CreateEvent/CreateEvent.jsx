@@ -57,7 +57,7 @@ const CreateEvent = () => {
 
     return (
         <Box className='create-main'>
-            <Card className='create-card'>
+            <Card className='create-card' sx={{ borderRadius: '16px' }}>
                 <CardHeader title='Nuevo evento' sx={{ textAlign: 'start' }} />
                 <CardContent sx={{ display: 'flex', width: '100', padding: '16px', justifyContent: 'center' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', width: '65%' }}>

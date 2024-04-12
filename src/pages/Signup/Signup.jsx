@@ -29,7 +29,7 @@ const Signup = () => {
 
     return (
       <div className='main'>
-        <Card className='anim' sx={{ maxWidth: '500px' }}>
+        <Card className='anim' sx={{ maxWidth: '500px', borderRadius: '16px' }}>
           <CardHeader title='Registro' />
           <CardContent>
           <TextField

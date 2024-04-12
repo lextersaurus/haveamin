@@ -55,7 +55,7 @@ const EventCard = ({event}) => {
   return (
     <>
     {events.length !== 0 ?
-    <Card color='background.paper' className="eventListLi" sx={{ display: 'flex', flexDirection: 'column', minWidth: 275, maxWidth: 500 }}>
+    <Card color='background.paper' className="eventListLi" sx={{ display: 'flex', flexDirection: 'column', minWidth: 275, maxWidth: 500, borderRadius: '16px' }}>
         <CardContent>
             <h3>{event.name}</h3>
             <p><Place sx={{ fontSize: 'medium'}}/> {event.place}</p>
@@ -76,6 +76,7 @@ const EventCard = ({event}) => {
         className='eventListLi'
         width={500}
         height={360}
+        sx={{ borderRadius: '16px' }}
     />
     }    
     </>

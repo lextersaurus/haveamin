@@ -58,7 +58,10 @@ const Header = () => {
   }
 
   return (
-    <Box component='nav' sx={{ margin: '124px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
+    <Box component='nav' sx={{ margin: '50px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' }} >
+      <Box>
+      <img src="src/assets/tempLogo.png" alt="" style={{ width: '70px', verticalAlign: 'middle'}}/>
+      </Box>
       <List >
         {Object.keys(links).map((key, index) => (
           <ListItem key={index} sx={{ padding: '0', color: 'text.primary', textDecoration: 'none' }}>

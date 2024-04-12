@@ -18,7 +18,7 @@ const UserCard = ({user}) => {
     }, [])
 
   return (
-    <Card sx={{ height:'auto', margin: '15px', }}>
+    <Card sx={{ height:'auto', margin: '15px', borderRadius: '16px' }}>
         <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Box sx={{ display: 'flex', gap: '24px'}}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
