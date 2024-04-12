@@ -1,0 +1,52 @@
+
+.eventListLi {
+    position: relative;
+    height: auto;
+    width: 800px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none; 
+    text-align: start; 
+}
+
+.eventList  {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.join-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.event-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.free-text {
+    margin-top: 8px !important;
+    padding: 8px 16px;
+    color: white;
+    margin: 0;
+
+    &.green-field {
+        background-color: #a3ccae;
+    }
+
+    &.red-field {
+        background-color: #e37179;
+    }
+}

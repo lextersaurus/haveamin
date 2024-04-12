@@ -1,7 +1,21 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+#root {
+  max-width: 100%;
+  margin: 0;
   text-align: center;
+  font-family: 'Montserrat';
 }
- */
+
+body{
+  margin: 0;
+}
+
+.main{
+  width: 100%;
+  height: 97vh;
+  display: grid;
+  place-items: center;
+}
+
+.anim {
+  view-transition-name: card;
+}
