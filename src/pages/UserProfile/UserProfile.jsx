@@ -5,7 +5,7 @@ import UserCard from "../../components/UserCard/UserCard"
 
 
 const UserProfile = () => {
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
 
     const handleUserProfile= async () => {
           const response = await getUserProfile()
@@ -16,10 +16,12 @@ const UserProfile = () => {
         handleUserProfile()
     }, [])
 
+    console.log(user);
+
   return (
     <div>
-      <h2>Perfil de usuario</h2>      
-       <UserCard user={user} />
+      <h2>Perfil de usuario</h2>
+      {user && <UserCard user={user} />}
     </div>
   )
 }

@@ -60,7 +60,7 @@ const EventCard = ({event}) => {
             <h3>{event.name}</h3>
             <p><Place sx={{ fontSize: 'medium'}}/> {event.place}</p>
             <p><Event sx={{ fontSize: 'medium'}}/> {formatDate(event.date)}</p>
-            <p><b>Rango de edad: </b>{event.ageMin} - {event.ageMax}</p>
+            <p>De {event.ageMin} a {event.ageMax} años</p>
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
         </CardContent>
         <CardActions className='join-btn' sx={{ marginTop: 'auto' }}>

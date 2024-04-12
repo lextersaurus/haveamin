@@ -65,7 +65,7 @@ const EventPage = () => {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         height: '90vh',
         display: 'flex',
         alignItems: 'center',
