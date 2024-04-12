@@ -27,3 +27,12 @@ export const getCreatedEvents = async (userId) => {
     localStorage.setItem('id', data.id)
     return data
 }
+
+export const getUserData = async (userId) => {
+    const { data } = await api.get(`/user/show/${userId}`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+    return { data }
+}
