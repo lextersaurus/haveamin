@@ -1,16 +1,14 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
-import Login from "../pages/Login/Login";
-import Signup from "../pages/Signup/Signup";
-import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home/Home";
-import AuthLayout from "../layouts/AuthLayout";
-/* import CategoryEvent from "../pages/CategoryEvent/CategoryEvent";
- */import UserEvents from "../pages/UserEvents/UserEvents";
-import AllEvents from "../components/AllEvents/AllEvents";
-import EventCategory from "../components/EventCategory/EventCategory";
-import EventPage from "../pages/Event/Event";
-import UserProfile from "../pages/UserProfile/UserProfile";
-import CreateEvent from "../pages/CreateEvent/CreateEvent";
+import { createBrowserRouter, redirect } from 'react-router-dom'
+import Login from '../pages/Login/Login'
+import Signup from '../pages/Signup/Signup'
+import MainLayout from '../layouts/MainLayout'
+import Home from '../pages/Home/Home'
+import AuthLayout from '../layouts/AuthLayout'
+import UserEvents from '../pages/UserEvents/UserEvents'
+import EventCategory from '../components/EventCategory/EventCategory'
+import EventPage from '../pages/Event/Event'
+import UserProfile from '../pages/UserProfile/UserProfile'
+import CreateEvent from '../pages/CreateEvent/CreateEvent'
 
 export const router = createBrowserRouter([
     {
@@ -29,31 +27,23 @@ export const router = createBrowserRouter([
                 }
             },
             {
-                path: '/miseventos',
+                path: 'miseventos',
                 element: <UserEvents/>
             },
-            /*     {
-                    path: '/categories',
-                    element: <CategoryEvent/>
-            }, */
             {
-                path: '/events',
-                element: <AllEvents/>
-            },
-            {
-                path: '/miperfil',
+                path: 'miperfil',
                 element: <UserProfile/>
             },
             {
-                path: 'category/:categoryId',
+                path: 'categoria/:categoryId',
                 element: <EventCategory />
             },
             {
-                path: 'event/:eventId',
+                path: 'evento/:eventId',
                 element: <EventPage />
             },
             {
-                path: 'event/create',
+                path: 'evento/crear',
                 element: <CreateEvent />
             }
         ]

@@ -46,7 +46,7 @@ const CreateEvent = () => {
 
     const handleEventCreation = async () => {
         const response = await createEvent(eventData)
-        navigate(`/event/${response.id}`)
+        navigate(`/evento/${response.id}`)
     }
 
     useEffect(() => {

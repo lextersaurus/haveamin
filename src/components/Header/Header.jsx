@@ -19,15 +19,15 @@ const links = {
     'icon': <HomeIcon />,
     'to': '/',
   },
-  'My events': {
+  'Mis eventos': {
     'icon': <CalendarIcon />,
     'to': '/miseventos',
   },
-  'New event': {
+  'Nuevo evento': {
     'icon': <EditCalendarIcon />,
-    'to': '/event/create',
+    'to': '/evento/crear',
   },
-  'My profile': {
+  'Mi perfil': {
     'icon': <AccountCircleIcon />,
     'to': '/miperfil',
   }
