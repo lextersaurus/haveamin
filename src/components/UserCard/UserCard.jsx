@@ -1,4 +1,4 @@
-import { Card, CardContent, Avatar, Typography, Box, Grid, Rating, Stack, Divider, CardHeader} from '@mui/material';
+import { Card, CardContent, Avatar, Typography, Box, Rating, Stack, Divider } from '@mui/material';
 import PropTypes from 'prop-types'
 import { getCreatedEvents } from '../../services/userService';
 import { useEffect, useState } from 'react';
@@ -64,40 +64,3 @@ UserCard.propTypes = {
 }
 
 export default UserCard;
-
-// <Grid container spacing={3}>
-
-// <Grid item xs={12} md={4}>
-//   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-//     <Avatar
-//         src="src/assets/img/usuarop.avif"
-//         sx={{ width: 200, height: 200, marginBottom: '20px', }}>
-//     </Avatar>
-//     <Typography variant="h5" component="h2">
-//       {user.nickName}
-//     </Typography>
-    
-    // <Stack spacing={1}>
-    //   <Rating name="size-large" defaultValue={4} size="large" disabled />
-    // </Stack>
-//   </Box>
-// </Grid>
-
-// <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-// <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center' }}>
-  // <Typography>
-  //   <b>Nombre: </b>{user.name}
-  // </Typography>
-  // <Typography>
-  //   <b>Apellido: </b>{user.lastName}
-  // </Typography>
-  // <Typography>
-  //   <b>Edad: </b>{user.age}
-  // </Typography>
-  // <Typography>
-  //   <b>Provincia: </b>{user.country}
-  // </Typography>
-// </Box>
-// </Grid>
-
-// </Grid>
