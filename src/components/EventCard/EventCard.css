@@ -36,28 +36,6 @@
     color: red;
 }
 
-/* .red-field {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: indianred;
-    margin: 0;
-    padding: 8px 16px;
-    color: white;
-}
-
-.green-field {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: darkseagreen;
-    margin: 0;
-    padding: 8px 16px;
-    color: white;
-} */
-
 .free-text {
     margin-top: 8px !important;
     padding: 8px 16px;

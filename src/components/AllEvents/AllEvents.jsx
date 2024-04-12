@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
-import { getAllEvents } from "../../services/eventService"
+import { useEffect, useState } from 'react'
+import { getAllEvents } from '../../services/eventService'
 import './AllEvents.css'
-import EventCard from "../EventCard/EventCard"
+import EventCard from '../EventCard/EventCard'
 
 
 const AllEvents = () => {
@@ -9,7 +9,6 @@ const AllEvents = () => {
 
     const handleUserEvents= async () => {
           const response = await getAllEvents()
-         /*  console.log(response) */
          setEvents(response)
       }
 
@@ -19,8 +18,8 @@ const AllEvents = () => {
 
   return (
     <div>
-      <h3>Todos los eventos</h3>
-      <ul className="eventList">
+      <h2>Todos los eventos</h2>
+      <ul className='eventList'>
           {events.map(event => (<EventCard key={event.id} event={event}/>))}
       </ul>
     </div>

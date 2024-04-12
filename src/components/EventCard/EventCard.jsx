@@ -55,16 +55,16 @@ const EventCard = ({event}) => {
   return (
     <>
     {events.length !== 0 ?
-    <Card color='background.paper' className="eventListLi" sx={{ display: 'flex', flexDirection: 'column', minWidth: 275, maxWidth: 500 }}>
+    <Card color='background.paper' className="eventListLi" sx={{ display: 'flex', flexDirection: 'column', minWidth: 275, maxWidth: 500, borderRadius: '16px' }}>
         <CardContent>
             <h3>{event.name}</h3>
             <p><Place sx={{ fontSize: 'medium'}}/> {event.place}</p>
             <p><Event sx={{ fontSize: 'medium'}}/> {formatDate(event.date)}</p>
-            <p><b>Rango de edad: </b>{event.ageMin} - {event.ageMax}</p>
+            <p>De {event.ageMin} a {event.ageMax} años</p>
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
         </CardContent>
         <CardActions className='join-btn' sx={{ marginTop: 'auto' }}>
-            <Button color='secondary' onClick={()=>{navigate('/event/'+event.id)}}>Ver detalles</Button>
+            <Button color='secondary' onClick={()=>{navigate('/evento/'+event.id)}}>Ver detalles</Button>
             {isUserJoined ?
             <Button variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
             <Button variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
@@ -76,6 +76,7 @@ const EventCard = ({event}) => {
         className='eventListLi'
         width={500}
         height={360}
+        sx={{ borderRadius: '16px' }}
     />
     }    
     </>

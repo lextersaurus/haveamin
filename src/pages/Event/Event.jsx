@@ -71,7 +71,7 @@ const EventPage = () => {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         height: '90vh',
         display: 'flex',
         alignItems: 'center',
@@ -89,7 +89,7 @@ const EventPage = () => {
         }}
       >
         <div className='eventCard'></div>
-        <Card sx={{ display: 'flex', width: '90%', justifyContent: 'center' }}>
+        <Card sx={{ display: 'flex', width: '90%', justifyContent: 'center', borderRadius: '16px' }}>
           <CardHeader title={event.name} />
         </Card>
       </Box>
@@ -101,6 +101,7 @@ const EventPage = () => {
           width: '80%',
           padding: '24px',
           height: 'fit-content',
+          borderRadius: '16px'
         }}
       >
         <CardContent

@@ -16,8 +16,6 @@ const Login = () => {
     try {
       const response = await login({ email, password })
       localStorage.setItem('token', response.token)
-        localStorage.setItem('id', response.id)
-        console.log(response)
       navigate('/')
     } catch (error) {
       setErrorMessage('¡Parece que no hemos podido iniciar sesión! Comprueba que tu e-mail y contraseña son correctos e inténtalo de nuevo.')
@@ -26,7 +24,7 @@ const Login = () => {
 
   return (
     <div className='main'>
-      <Card className='anim' sx={{ maxWidth: '500px' }}>
+      <Card className='anim' sx={{ maxWidth: '500px', borderRadius: '16px' }}>
         <CardHeader title='Inicio de sesión' />
         <CardContent>
           <TextField

@@ -6,7 +6,7 @@
 }
 
 .empty-category {
-    width: 90vw;
+    width: 90%;
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -16,5 +16,5 @@
 }
 
 .category-header {
-    width: 100vw;
+    width: 100%;
 }

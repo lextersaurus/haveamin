@@ -44,8 +44,9 @@ const CreateEvent = () => {
         })
     }
 
-    const handleEventCreation = () => {
-        createEvent(eventData)
+    const handleEventCreation = async () => {
+        const response = await createEvent(eventData)
+        navigate(`/evento/${response.id}`)
     }
 
     useEffect(() => {
@@ -56,7 +57,7 @@ const CreateEvent = () => {
 
     return (
         <Box className='create-main'>
-            <Card className='create-card'>
+            <Card className='create-card' sx={{ borderRadius: '16px' }}>
                 <CardHeader title='Nuevo evento' sx={{ textAlign: 'start' }} />
                 <CardContent sx={{ display: 'flex', width: '100', padding: '16px', justifyContent: 'center' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', width: '65%' }}>
@@ -108,11 +109,11 @@ const CreateEvent = () => {
                             sx={{ display: 'flex', gap: '24px', marginBottom: '24px' }}
                         >
                             <TextField
-                                required
-                                type='number'
-                                label='Edad mínima'
-                                variant='outlined'
-                                onChange={(e) => handleInputChange('ageMin', e.target.value)}
+                            required
+                            type='number'
+                            label='Edad mínima'
+                            variant='outlined'
+                            onChange={(e) => handleInputChange('ageMin', e.target.value)}
                             />
                             <TextField
                                 required

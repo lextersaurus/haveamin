@@ -1,9 +1,11 @@
-import { Button, Card, CardActions, CardContent, CardHeader, Divider, TextField, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardHeader, Divider, IconButton, InputAdornment, TextField, Typography } from '@mui/material'
+import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material'
 import { useState } from 'react'
 import { signup } from '../../services/authService'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+    const [visible, setVisible] = useState(false)
     const [name, setName] = useState(null)
     const [lastName, setLastName] = useState(null)
     const [nickName, setNickName] = useState(null)
@@ -27,7 +29,7 @@ const Signup = () => {
 
     return (
       <div className='main'>
-        <Card className='anim' sx={{ maxWidth: '500px' }}>
+        <Card className='anim' sx={{ maxWidth: '500px', borderRadius: '16px' }}>
           <CardHeader title='Registro' />
           <CardContent>
           <TextField
@@ -63,13 +65,25 @@ const Signup = () => {
             />
             <TextField
             required
-             onChange={(e) => setPassword(e.target.value)}
-              type='password'
-              label='Contraseña'
-              variant='outlined'
-              fullWidth={true}
-              sx={{ marginBottom: '20px' }}
-            />
+            onChange={(e) => setPassword(e.target.value)}
+            type={ visible ? 'text' : 'password' }
+            label='Contraseña'
+            variant='outlined'
+            fullWidth={true}
+            margin='dense'
+            InputProps={{
+              endAdornment: (
+                  <InputAdornment position="end">
+                      <IconButton 
+                          onClick={ () => setVisible((value) => !value) }
+                      >
+                          { visible ? <VisibilityOutlined /> : <VisibilityOffOutlined /> }
+                      </IconButton>
+                  </InputAdornment>
+              )
+            }}
+            sx={{ marginBottom: '20px' }}
+          />
             <TextField
             required
               onChange={(e) => setAge(e.target.value)}

@@ -99,7 +99,7 @@ const CategoryEvent = () => {
         <div className="category-slider">
             <Slider {...settings}>
                 {categories.map(category => (
-                    <Link className="categoryListLi" key={category.id} to={'/category/' + category.id} >
+                    <Link className="categoryListLi" key={category.id} to={'/categoria/' + category.id} >
                         <div className="category-item">
                             <img src={category.image} 
                                 style={{borderRadius: '50%', width: '100px', height: '100px', objectFit: 'cover',}} 
