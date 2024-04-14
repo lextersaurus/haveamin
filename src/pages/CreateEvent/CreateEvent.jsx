@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Box, Button, Card, CardActions, CardContent, CardHeader, Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
 import { DateTimePicker } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -19,6 +20,7 @@ dayjs.extend(timezone)
 
 const CreateEvent = () => {
     const [categories, setCategories] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     const [eventData, setEventData] = useState({
         name: '',
@@ -45,6 +47,7 @@ const CreateEvent = () => {
     }
 
     const handleEventCreation = async () => {
+        setIsLoading(true)
         const response = await createEvent(eventData)
         navigate(`/evento/${response.id}`)
     }
@@ -133,9 +136,9 @@ const CreateEvent = () => {
                         </LocalizationProvider>
                     </Box>
                 </CardContent>
-                <CardActions sx={{ display: 'flex', justifyContent: 'end', marginBottom: '16px' }}>
-                    <Button color='secondary' onClick={() => { navigate('/') }}>Cancelar</Button>
-                    <Button variant='contained' onClick={() => { handleEventCreation() }}>Crear</Button>
+                <CardActions sx={{ display: 'flex', justifyContent: 'end' }}>
+                    <Button className='buttons' color='secondary' onClick={() => { navigate('/') }}>Cancelar</Button>
+                    <LoadingButton loading={isLoading} className='buttons' variant='contained' onClick={() => { handleEventCreation() }}>Crear</LoadingButton>
                 </CardActions>
             </Card>
         </Box>

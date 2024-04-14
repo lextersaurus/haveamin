@@ -1,91 +1,90 @@
-import { useState, useEffect } from "react";
-import { getCategoryEvent } from "../../services/eventService";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './CategoryEventList.css';
+import { useState, useEffect } from "react"
+import { getCategoryEvent } from "../../services/eventService"
+import { Link } from "react-router-dom"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import { Skeleton } from '@mui/material'
+import './CategoryEventList.css'
 
-import deportsImage from "../../assets/categories/deports.png";
-import petsImg from "../../assets/categories/pets.jpg";
-import foodImg from "../../assets/categories/food.jpg";
-import danceImg from "../../assets/categories/dance.jpg";
-import videogamesImg from "../../assets/categories/videogames.jpg";
-import tableboardImg from "../../assets/categories/tableboard.jpg";
-import tecnologyImg from "../../assets/categories/tecnology.jpg";
-import travelsImg from "../../assets/categories/travels.jpg";
-import artImg from "../../assets/categories/art.jpg";
-import musicImg from "../../assets/categories/music.jpg";
-import othersImg from "../../assets/categories/others.jpg";
+import deportsImage from "../../assets/categories/deports.png"
+import petsImg from "../../assets/categories/pets.jpg"
+import foodImg from "../../assets/categories/food.jpg"
+import danceImg from "../../assets/categories/dance.jpg"
+import videogamesImg from "../../assets/categories/videogames.jpg"
+import tableboardImg from "../../assets/categories/tableboard.jpg"
+import tecnologyImg from "../../assets/categories/tecnology.jpg"
+import travelsImg from "../../assets/categories/travels.jpg"
+import artImg from "../../assets/categories/art.jpg"
+import musicImg from "../../assets/categories/music.jpg"
+import othersImg from "../../assets/categories/others.jpg"
 
 const CategoryEvent = () => {
-    const [categories, setCategories] = useState([]);
-    const [slidesToShow, setSlidesToShow] = useState('');
-    const [slidesToScroll, setSlidesToScroll] = useState('');
+    const [categories, setCategories] = useState([])
+    const [slidesToShow, setSlidesToShow] = useState('')
+    const [slidesToScroll, setSlidesToScroll] = useState('')
 
     const handleCategory = async () => {
-        const response = await getCategoryEvent();
+        const response = await getCategoryEvent()
         setCategories(response.map(category => ({
             ...category,
             image: getCategoryImage(category.id)
-        })));
+        })))
     }
-
-    useEffect(() => {
-        handleCategory();
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
-
     /* Cantidad de categorias segun el tamaño de la pantalla */
     const handleResize = () => {
         if (window.innerWidth < 768) {
-            setSlidesToShow(2);
-            setSlidesToScroll(1);
+            setSlidesToShow(2)
+            setSlidesToScroll(1)
         } else if (window.innerWidth < 992) {
-            setSlidesToShow(3);
-            setSlidesToScroll(2);
+            setSlidesToShow(3)
+            setSlidesToScroll(2)
         } else if (window.innerWidth < 1200) {
-            setSlidesToShow(7);
-            setSlidesToScroll(3);
+            setSlidesToShow(7)
+            setSlidesToScroll(3)
         }else  {
-            setSlidesToShow(9);
-            setSlidesToScroll(3);
+            setSlidesToShow(9)
+            setSlidesToScroll(3)
         }
-    };
+    }
+
+    useEffect(() => {
+        handleCategory()
+        handleResize()
+        window.addEventListener("resize", handleResize)
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [])
 
     const getCategoryImage = (categoryId) => {
         switch (categoryId) {
             case 1:
-                return deportsImage;
+                return deportsImage
             case 2:
-                return petsImg;
+                return petsImg
             case 3:
-                return videogamesImg;
+                return videogamesImg
             case 4:
-                return tableboardImg;
+                return tableboardImg
             case 5:
-                return foodImg;
+                return foodImg
             case 6:
-                return danceImg;
+                return danceImg
             case 7:
-                return tecnologyImg;
+                return tecnologyImg
             case 8:
-                return travelsImg;
+                return travelsImg
             case 9:
-                return artImg;
+                return artImg
             case 10:
-                return musicImg;
+                return musicImg
             case 11:
-                return othersImg;
+                return othersImg
             default:
-                return null; 
+                return null 
         }
     }
-
     // Configuración del carrusel
     const settings = {
         infinite: true,
@@ -93,9 +92,24 @@ const CategoryEvent = () => {
         slidesToShow: slidesToShow,
         slidesToScroll: slidesToScroll,
         arrows: true
-    };
+    }
 
     return (
+        <>
+        {categories.length == 0 ? 
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }} >
+            {
+                [...Array(slidesToShow).keys()].map(idx => {
+                    return (
+                        <Skeleton 
+                        key={idx}
+                        height={100}
+                        width={100}
+                        variant='circular'
+                        sx={{ margin: '10px' }}
+                    />)})
+            }
+        </div> :
         <div className="category-slider">
             <Slider {...settings}>
                 {categories.map(category => (
@@ -110,7 +124,9 @@ const CategoryEvent = () => {
                 ))}
             </Slider>
         </div>
-    );
+        }
+        </>
+    )
 }
 
-export default CategoryEvent;
+export default CategoryEvent

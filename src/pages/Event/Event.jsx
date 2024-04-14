@@ -5,12 +5,12 @@ import {
   Card,
   CardContent,
   CardActions,
-  Button,
   CardHeader,
   Box,
   Divider,
 } from '@mui/material'
 import { Place, Event, Accessible, Check, Close } from '@mui/icons-material'
+import { LoadingButton } from '@mui/lab'
 import { joinEvent, quitEvent } from '../../services/eventService'
 import { getUserData, getUserEvent } from '../../services/userService'
 import './Event.css'
@@ -20,6 +20,7 @@ const EventPage = () => {
   const [userJoin, setUserJoin] = useState()
   const [events, setEvents] = useState([])
   const [user, setUser] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
   const { eventId } = useParams()
 
   const handleEvent = async () => {
@@ -36,14 +37,17 @@ const EventPage = () => {
   const handleUserEvents = async () => {
     const response = await getUserEvent()
     setEvents(response)
+    setIsLoading(false)
   }
 
   const handleOnJoin = async (eventId) => {
+    setIsLoading(true)
     await joinEvent(eventId)
     setUserJoin(true)
   }
 
   const handleOnQuit = async (eventId) => {
+    setIsLoading(true)
     await quitEvent(eventId)
     setUserJoin(false)
   }
@@ -123,6 +127,7 @@ const EventPage = () => {
                 width='500'
                 height='300'
                 loading='lazy'
+                style={{ borderRadius: '16px'}}
               ></iframe>
             </div>
           </Box>
@@ -173,23 +178,27 @@ const EventPage = () => {
 
         <CardActions sx={{ display: 'flex', justifyContent: 'end' }}>
           {isUserJoined ? (
-            <Button
+            <LoadingButton
+              className='buttons'
+              loading={isLoading}
               variant='outlined'
               onClick={() => {
                 handleOnQuit(event.id)
               }}
             >
               Salir
-            </Button>
+            </LoadingButton>
           ) : (
-            <Button
+            <LoadingButton
+              className='buttons'
+              loading={isLoading}
               variant='contained'
               onClick={() => {
                 handleOnJoin(event.id)
               }}
             >
               Unirse
-            </Button>
+            </LoadingButton>
           )}
         </CardActions>
       </Card>
