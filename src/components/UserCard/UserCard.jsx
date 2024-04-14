@@ -3,14 +3,17 @@ import PropTypes from 'prop-types'
 import { getCreatedEvents } from '../../services/userService';
 import { useEffect, useState } from 'react';
 import EventCard from '../EventCard/EventCard';
+import Loading from "../../components/Loading/Loading"
 import './UserCard.css'
 
 const UserCard = ({user}) => {
     const [events, setEvents] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const handleCreatedEvents = async () => {
         const response = await getCreatedEvents(localStorage.id)
         setEvents(response)
+        setIsLoading(false)
       }
 
     useEffect(() => {
@@ -19,6 +22,10 @@ const UserCard = ({user}) => {
 
   return (
     <Card sx={{ height:'auto', margin: '15px', borderRadius: '16px' }}>
+      {
+        isLoading ? 
+        <Loading /> :
+        <>
         <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Box sx={{ display: 'flex', gap: '24px'}}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -55,6 +62,8 @@ const UserCard = ({user}) => {
           </ul>
         </div>
         </CardContent>
+        </>
+      }
     </Card>
   )
 }

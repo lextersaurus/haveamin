@@ -23,3 +23,17 @@ body{
 .buttons {
   border-radius: 16px !important;
 }
+
+.main-logo {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  align-items: center;
+  color: #50B2C0;
+  view-transition-name: logo;
+
+  > img {
+    height: 100px;
+    margin-right: 16px;
+  }
+}

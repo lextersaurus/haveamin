@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { Skeleton } from '@mui/material'
 import './CategoryEventList.css'
 
 import deportsImage from "../../assets/categories/deports.png"
@@ -94,6 +95,21 @@ const CategoryEvent = () => {
     }
 
     return (
+        <>
+        {categories.length == 0 ? 
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }} >
+            {
+                [...Array(slidesToShow).keys()].map(idx => {
+                    return (
+                        <Skeleton 
+                        key={idx}
+                        height={100}
+                        width={100}
+                        variant='circular'
+                        sx={{ margin: '10px' }}
+                    />)})
+            }
+        </div> :
         <div className="category-slider">
             <Slider {...settings}>
                 {categories.map(category => (
@@ -108,6 +124,8 @@ const CategoryEvent = () => {
                 ))}
             </Slider>
         </div>
+        }
+        </>
     )
 }
 
