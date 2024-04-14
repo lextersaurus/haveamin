@@ -107,8 +107,8 @@ const Signup = () => {
           </CardContent>
           <Divider />
           <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Link to='/auth/login' unstable_viewTransition><Button>Iniciar sesión</Button></Link>
-            <Button variant='contained' onClick={() => {handleSignup()}}>
+            <Link to='/auth/login' unstable_viewTransition ><Button className='buttons' >Iniciar sesión</Button></Link>
+            <Button className='buttons' variant='contained' onClick={() => {handleSignup()}}>
               Registrar
             </Button>
           </CardActions>

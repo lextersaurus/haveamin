@@ -46,7 +46,7 @@ const EventCategory = () => {
             {categoryEvents.length === 0 ? 
             <Box className='empty-category'>
                 <Typography variant='h5' color='primary'>¡Vaya! Parece que no hay nada por aquí...</Typography>
-                <Button variant='outlined' onClick={() => {navigate('/')}}>Ver todos los eventos</Button>
+                <Button className='buttons' variant='outlined' onClick={() => {navigate('/')}}>Ver todos los eventos</Button>
             </Box> :
             <ul className='eventList'>
                 {categoryEvents.map(event => (<EventCard key={event.id} event={event}/>))}

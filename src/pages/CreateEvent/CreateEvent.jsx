@@ -133,9 +133,9 @@ const CreateEvent = () => {
                         </LocalizationProvider>
                     </Box>
                 </CardContent>
-                <CardActions sx={{ display: 'flex', justifyContent: 'end', marginBottom: '16px' }}>
-                    <Button color='secondary' onClick={() => { navigate('/') }}>Cancelar</Button>
-                    <Button variant='contained' onClick={() => { handleEventCreation() }}>Crear</Button>
+                <CardActions sx={{ display: 'flex', justifyContent: 'end' }}>
+                    <Button className='buttons' color='secondary' onClick={() => { navigate('/') }}>Cancelar</Button>
+                    <Button className='buttons' variant='contained' onClick={() => { handleEventCreation() }}>Crear</Button>
                 </CardActions>
             </Card>
         </Box>
