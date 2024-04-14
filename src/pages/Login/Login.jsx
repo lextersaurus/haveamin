@@ -1,5 +1,6 @@
 import { Button, Card, CardActions, CardContent, CardHeader, Divider, IconButton, InputAdornment, TextField, Typography } from '@mui/material'
 import { EmailOutlined, LockOutlined, VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material'
+import { LoadingButton } from '@mui/lab'
 import { useState } from 'react'
 import { login } from '../../services/authService'
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,16 +10,20 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
 
   const handleLogin = async () => {
     try {
+      setIsLoading(true)
       const response = await login({ email, password })
       localStorage.setItem('token', response.token)
       navigate('/')
     } catch (error) {
       setErrorMessage('¡Parece que no hemos podido iniciar sesión! Comprueba que tu e-mail y contraseña son correctos e inténtalo de nuevo.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -75,9 +80,9 @@ const Login = () => {
         <Divider />
         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Link to='/auth/signup' unstable_viewTransition ><Button className='buttons'>Registrarse</Button></Link>
-          <Button className='buttons' variant='contained' onClick={() => { handleLogin() }}>
+          <LoadingButton loading={isLoading} className='buttons' variant='contained' onClick={() => { handleLogin() }}>
             Iniciar sesión
-          </Button>
+          </LoadingButton>
         </CardActions>
       </Card>
     </div>

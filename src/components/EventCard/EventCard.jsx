@@ -6,6 +6,7 @@ import {
     Check,
     Close
 } from '@mui/icons-material'
+import { LoadingButton } from '@mui/lab'
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { getUserEvent } from '../../services/userService'
@@ -29,19 +30,23 @@ const formatDate = (date) => {
 const EventCard = ({event}) => {
     const [events, setEvents] = useState([])
     const [userJoin, setUserJoin] = useState()
+    const [isLoading, setIsLoading] = useState(false)
     const navigate= useNavigate()
 
     const handleUserEvents= async () => {
         const response = await getUserEvent()
         setEvents(response)
+        setIsLoading(false)
     }
 
     const handleOnJoin = async (eventId) => {
+        setIsLoading(true)
         await joinEvent(eventId)
         setUserJoin(true)
     }
 
     const handleOnQuit = async (eventId) => {
+        setIsLoading(true)
         await quitEvent(eventId)
         setUserJoin(false)
     }
@@ -66,8 +71,8 @@ const EventCard = ({event}) => {
         <CardActions className='join-btn' sx={{ marginTop: 'auto' }}>
             <Button className='buttons' color='secondary' onClick={()=>{navigate('/evento/'+event.id)}}>Ver detalles</Button>
             {isUserJoined ?
-            <Button className='buttons'  variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
-            <Button className='buttons' variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
+            <LoadingButton loading={isLoading} className='buttons'  variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</LoadingButton> :
+            <LoadingButton loading={isLoading} className='buttons' variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</LoadingButton>}
         </CardActions>
         {!event.isFree ? <p className='free-text red-field'>Evento de pago</p> : <p className='free-text green-field'>Evento gratuito</p>}
     </Card> :
