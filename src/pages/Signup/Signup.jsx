@@ -1,5 +1,6 @@
 import { Button, Card, CardActions, CardContent, CardHeader, Divider, IconButton, InputAdornment, TextField, Typography } from '@mui/material'
 import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material'
+import { LoadingButton } from '@mui/lab'
 import { useState } from 'react'
 import { signup } from '../../services/authService'
 import { Link, useNavigate } from 'react-router-dom'
@@ -14,16 +15,21 @@ const Signup = () => {
     const [age, setAge] = useState(null)
     const [country, setCountry] = useState(null)
     const [errorMessage, setErrorMessage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+
 
     const navigate = useNavigate()
 
     const handleSignup = async () => {
       try {
+        setIsLoading(true)
         const response = await signup({ name: name, lastName: lastName, nickName: nickName, email: email, password: password, age: age, country: country })
         localStorage.setItem('token', response.token)
         navigate('/')
       } catch (error) {
         setErrorMessage('No se ha podido completar el registro, asegúrate de que has cumplimentados todos los campos obligatorios *')
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -108,9 +114,9 @@ const Signup = () => {
           <Divider />
           <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Link to='/auth/login' unstable_viewTransition ><Button className='buttons' >Iniciar sesión</Button></Link>
-            <Button className='buttons' variant='contained' onClick={() => {handleSignup()}}>
+            <LoadingButton loading={isLoading} className='buttons' variant='contained' onClick={() => {handleSignup()}}>
               Registrar
-            </Button>
+            </LoadingButton>
           </CardActions>
         </Card>
       </div>
