@@ -74,8 +74,8 @@ const Login = () => {
         </CardContent>
         <Divider />
         <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Link to='/auth/signup' unstable_viewTransition><Button>Registrarse</Button></Link>
-          <Button variant='contained' onClick={() => { handleLogin() }}>
+          <Link to='/auth/signup' unstable_viewTransition ><Button className='buttons'>Registrarse</Button></Link>
+          <Button className='buttons' variant='contained' onClick={() => { handleLogin() }}>
             Iniciar sesión
           </Button>
         </CardActions>

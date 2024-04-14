@@ -19,3 +19,7 @@ body{
 .anim {
   view-transition-name: card;
 }
+
+.buttons {
+  border-radius: 16px !important;
+}

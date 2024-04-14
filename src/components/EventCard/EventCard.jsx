@@ -64,10 +64,10 @@ const EventCard = ({event}) => {
             <div><Accessible /> {event.isAccessible ? <Check color='success'/> : <Close color='error'/>}</div>
         </CardContent>
         <CardActions className='join-btn' sx={{ marginTop: 'auto' }}>
-            <Button color='secondary' onClick={()=>{navigate('/evento/'+event.id)}}>Ver detalles</Button>
+            <Button className='buttons' color='secondary' onClick={()=>{navigate('/evento/'+event.id)}}>Ver detalles</Button>
             {isUserJoined ?
-            <Button variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
-            <Button variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
+            <Button className='buttons'  variant='outlined' onClick={() => {handleOnQuit(event.id)}}>Salir</Button> :
+            <Button className='buttons' variant='contained' onClick={() => {handleOnJoin(event.id)}}>Unirse</Button>}
         </CardActions>
         {!event.isFree ? <p className='free-text red-field'>Evento de pago</p> : <p className='free-text green-field'>Evento gratuito</p>}
     </Card> :
