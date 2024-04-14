@@ -15,6 +15,7 @@ import {
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom"
+import logolightImg from '../../assets/logo/logolight.png'
 
 import './Header.css'
 
@@ -109,7 +110,7 @@ const Header = () => {
           alignItems: 'center',
           justifyContent: 'start'
         }}>
-          <img src="src/assets/logo/logolight.png" alt="haveamin?" className='navbar-logo' />
+          <img src={logolightImg} alt="haveamin?" className='navbar-logo' />
           <span style={{
             padding: '16px',
             color: '#fff9f1'
