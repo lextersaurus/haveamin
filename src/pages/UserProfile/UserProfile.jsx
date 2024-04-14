@@ -8,15 +8,14 @@ const UserProfile = () => {
     const [user, setUser] = useState({})
 
     const handleUserProfile= async () => {
-          const response = await getUserProfile()
-         setUser(response)
+        const response = await getUserProfile()
+        setUser(response)
       }
 
     useEffect(() => {
-        handleUserProfile()
+      handleUserProfile()
     }, [])
 
-    console.log(user);
 
   return (
     <div>
